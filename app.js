@@ -123,3 +123,36 @@ class Calculator {
         }
     }
 }
+
+const calculator = new Calculator(
+    document.querySelector("[data-previous-op]"),
+    document.querySelector("[data-current-op]")
+);
+
+// Function to handle button clicks
+function handleClick(button) {
+    const buttonValue = button.innerText;
+    if (buttonValue === "DEL") {
+        calculator.delete();
+    } else if (buttonValue === "AC") {
+        calculator.clear();
+    } else if (buttonValue === "=") {
+        calculator.compute();
+    } else if (buttonValue === ".") {
+        calculator.appendNumber(".");
+    } else if (buttonValue === "+" || buttonValue === "-" || buttonValue === "*" || buttonValue === "÷") {
+        calculator.chooseOperation(buttonValue);
+    } else {
+        calculator.appendNumber(buttonValue);
+    }
+    calculator.updateOutput();
+}
+
+const buttons = document.querySelectorAll("button");
+
+// Add click event listeners to the buttons
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        handleClick(button);
+    });
+});
