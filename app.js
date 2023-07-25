@@ -54,4 +54,45 @@ class Calculator {
         setTimeout(function () {
             errorMessageElement.remove();
         }, 2500); // Remove the error message after 2.5 seconds
-}
+    }
+
+    // Compute the result of the operation
+    compute() {
+        let computation;
+        const prev = parseFloat(this.previousOp);
+        const curr = parseFloat(this.currentOp);
+        
+        if (isNaN(prev) || isNaN(curr))
+            return;
+        switch (this.operation) {
+            case "+":
+                computation = prev + curr;
+                break;
+            case "-":
+                computation = prev - curr;
+                break;
+            case "*":
+                computation = prev * curr;
+                break;
+            case "÷":
+                if (curr === 0) { //Feature 
+                    this.displayErrorMessage("You broke math! Dividing by zero leads to infinity.");
+                    return;
+                }
+                computation = prev / curr;
+                break;
+            default:
+                return;
+        }
+
+        if (!isFinite(computation)) {
+            this.displayErrorMessage("Infinity! You're trying to break the universe.");
+            return;
+        }
+
+        this.currentOp = computation;
+        this.operation = undefined;
+        this.previousOp = "";
+    }
+
+    //
