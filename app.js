@@ -95,4 +95,31 @@ class Calculator {
         this.previousOp = "";
     }
 
-    //
+    // Format the number for output
+    getOutputNumber(number) {
+        const stringNumber = number.toString();
+        const integerDigits = parseFloat(stringNumber.split(".")[0]);
+        const decimalDigits = stringNumber.split(".")[1];
+        let integerOutput;
+        if (isNaN(integerDigits)) {
+            integerOutput = "";
+        } else {
+            integerOutput = integerDigits.toLocaleString("en", { maximumFractionDigits: 0 });
+        }
+        if (decimalDigits != null) {
+            return `${integerOutput}.${decimalDigits}`;
+        } else {
+            return integerOutput;
+        }
+    }
+
+    // Update the output with current & previous ops
+    updateOutput() {
+        this.currentOpTextElement.innerText = this.getOutputNumber(this.currentOp);
+        if (this.operation != null) {
+            this.previousOpTextElement.innerText = `${this.getOutputNumber(this.previousOp)} ${this.operation}`;
+        } else {
+            this.previousOpTextElement.innerText = "";
+        }
+    }
+}
