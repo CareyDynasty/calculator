@@ -7,7 +7,31 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="calculator"> 
+        <div class="display"> 
+            <div data-previous-op class="previous-op"></div>
+            <div data-current-op class="current-op"></div>
+        </div>
+        <!-- Keypad -->
+        <button data-all-clear class="span-two" data-keycode = "27">AC</button>
+        <button data-delete data-keycode = "46">DEL</button>
+        <button data-operation class="symbol" data-keycode = "191">÷</button>
+        <button data-number data-keycode = "55">7</button> 
+        <button data-number data-keycode = "56">8</button>
+        <button data-number data-keycode = "57">9</button>
+        <button data-operation class="symbol" data-keycode = "106">*</button>
+        <button data-number data-keycode = "52">4</button>
+        <button data-number data-keycode = "53">5</button>
+        <button data-number data-keycode = "54">6</button>
+        <button data-operation class="symbol" data-keycode = "187">+</button>
+        <button data-number data-keycode = "49">1</button>
+        <button data-number data-keycode = "50">2</button>
+        <button data-number data-keycode = "51">3</button>
+        <button data-operation class="symbol" data-keycode = "189">-</button>
+        <button data-number data-keycode = "190">.</button>
+        <button data-number data-keycode = "48">0</button>
+        <button data-equals class="span-two" data-keycode = "13">=</button>
+   </div>
 
     <script src="app.js"></script>
 </body>
