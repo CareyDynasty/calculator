@@ -156,3 +156,26 @@ buttons.forEach(button => {
         handleClick(button);
     });
 });
+
+// Add Keydown event listener 
+document.addEventListener("keydown", event => {
+    const key = event.key;
+    const button = Array.from(buttons).find(btn => btn.innerText === key);
+    if (button) {
+        handleClick(button);
+    }
+});
+// Feature
+// Function to handle button clicks using key-codes
+function handleKeyCode(keyCode) {
+    const button = Array.from(buttons).find(btn => parseInt(btn.dataset.keycode) === keyCode);
+    if (button) {
+        handleClick(button);
+    }
+}
+
+// Add Keydown event listener 
+document.addEventListener("keydown", event => {
+    const keyCode = event.keyCode || event.which;
+    handleKeyCode(keyCode);
+});
